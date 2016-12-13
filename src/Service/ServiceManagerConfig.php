@@ -121,12 +121,6 @@ class ServiceManagerConfig extends Config
                 }
 
                 if ($container instanceof ServiceManager && $instance instanceof ServiceManagerAwareInterface) {
-                    trigger_error(sprintf(
-                        'ServiceManagerAwareInterface is deprecated and will be removed in version 3.0, along '
-                        . 'with the ServiceManagerAwareInitializer. Please update your class %s to remove '
-                        . 'the implementation, and start injecting your dependencies via factory instead.',
-                        get_class($instance)
-                    ), E_USER_DEPRECATED);
                     $instance->setServiceManager($container);
                 }
             },
@@ -151,12 +145,6 @@ class ServiceManagerConfig extends Config
                 if ($instance instanceof ServiceLocatorAwareInterface
                     && ! $instance instanceof AbstractPluginManager
                 ) {
-                    trigger_error(sprintf(
-                        'ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along '
-                        . 'with the ServiceLocatorAwareInitializer. Please update your class %s to remove '
-                        . 'the implementation, and start injecting your dependencies via factory instead.',
-                        get_class($instance)
-                    ), E_USER_DEPRECATED);
                     $instance->setServiceLocator($container);
                 }
 
@@ -167,12 +155,6 @@ class ServiceManagerConfig extends Config
                     && $instance instanceof AbstractPluginManager
                     && ! $instance->getServiceLocator()
                 ) {
-                    trigger_error(sprintf(
-                        'ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along '
-                        . 'with the ServiceLocatorAwareInitializer. Please update your %s plugin manager factory '
-                        . 'to inject the parent service locator via the constructor.',
-                        get_class($instance)
-                    ), E_USER_DEPRECATED);
                     $instance->setServiceLocator($container);
                 }
             },
